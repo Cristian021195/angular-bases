@@ -1,27 +1,82 @@
 # AngularBases
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Comandos para arrancar
+- DEV SRV: `ng serve` | `http://localhost:4200/`
+- OTROS: `ng generate directive|pipe|service|class|guard|interface|enum|module`
+    - Modulo: `ng generate module <nombre>` | `ng g m <nombre>`
+    - Componente: `ng generate component <nombre>` | `ng g c <nombre>`
 
 ## Build
+- CONSTRUCCIÓN DE APP: `ng build`, será almacenado en `dist/`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Correr tests
+- TEST UNITARIOS `ng test`
 
-## Running unit tests
+## Correr tests end-to-end
+- TESTS COMPLETOS: `ng e2e`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## TEORÍA Y BASES:
 
-## Running end-to-end tests
+### Módulos: 
+- Es un mecanismo de encapsulacion y orgenizacion, para agrupar componentes, directivas, pipes,
+ servicios y demas elementos en una unidad funcional coherente. 
+- Importan y exportan elementos
+- Registran proveedores, ej: modulo de usuarios si manejamos login
+- Evitan conflictos de nombres por namespaces
+- Ayudan a dividir la app en partes mas pequeñas, escalables y mantenibles
+- Tenemos un modulo principal y luego los modulos inferiores.
+- A diferencia de los componentes, los modulos no se ven. Son la estructura organizativa.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Decoradores: @NgModule
+Es una estructura de datos en typescript. En angular lo veremos en la definicion
+de componentes y permite configurar la app angular. Es la metadata que tiene por parametros un objeto con:
+- declaraciones: va el componente
+- importaciones: van otros modulos
+- exportaciones: van componentes o no, cosas que usaremos en otros modulos o componentes
+- proveedores?, bootstrap?, etc: 
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Componentes: 
+- Son responsables de definir como se ve y comporta una parte especifica de la UI de la app
+- Cada compoente representa un elemento visual o funcional de la web. 
+- Sigue el diseño Atomico / Atomic Design, siguiendo la jerarquia de UI
+- Cuando los creamos con CLI nos genera 4 archivos
+    - Controlador, Lógica y datos: <nombre>.component.ts
+        - La metadata de este componente es @Component
+        - selector: app-'<nombre>' es la estructura html que se usara en la vista, el nombre
+        - templateUrl: ruta que apunta a la plantilla html
+        - styleUrls: [url a estilos, ... , otros.css]
+        - `export class NombreComponent implements OnInit{...}`
+            - Propiedades, son atributos del objeto. como `titulo:string`
+            - Metodo `contructor(){}`
+            - `noOnInit(){}`, metodos de inicializacion de OnInit
+    - Vista, Plantilla visual: <nombre>.component.html
+    - Estilos de plantilla: <nombre>.component.css
+    - Scripts de pruebas: <nombre>.component.spec.css
+- Se crean con `ng g c <nombre>` y genera `/nombre{component.ts, component.html, component.css, spec.ts}`
+
+### Data binding / Enlace de datos:
+- Conecta y sincroniza los datos entre el modelo controlador y la vista
+- El enlace de datos permite que los cambios del modelo se actualizen automaticamente en la vista
+- Es la comunición, la ida y vuelta de los datos que pasan por los componentes
+- Unidireccional: los cambios en el modelo se reflejan en la vista
+- Bidireccional: los cambios en la vista actualizan al modelo (formularios)
+- Reactivo: usa observables para actualizar en tiempo real
+
+### Comunicación entre componentes:
+- Cuenta on la entrada IN, y salida OUT
+- con estas propiedades los componentes pueden emitir hacia arriba o hacia abajo la info
+- Un componente padre puede pasar data a un hijo por la vinculacion de `propiedades de entrada`
+    - En el componente hijo: @Input() <nombre variable>:<type>
+- Un hijo puede emitir eventos que un padre puede escuchar a traves de las `propiedades de salida`
+
+### Servicios:
+### Dependencias:
+### Plantillas:
+### Directivas:
+### Router:
+### Metadata: 
+- Son representado por los decoradores, es la información que define
+    - modulos, servicios, etc.
+- se usa para configurar y personalizar el comportamiento del estado de la app
+- @Component, @NgModule, @Injectable se usan para adjuntar metadata a las clases
