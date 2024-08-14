@@ -1,9 +1,18 @@
-<main class="main">
-  <div class="content">
-    <!--<app-contador [titulo]="valorDesdePadre" (mensajeEvento)="recibeMensaje('asd')"/>
+<!--<app-contador [titulo]="valorDesdePadre" (mensajeEvento)="recibeMensaje('asd')"/>
     <h2>Mensaje: (7) {{recibido}}</h2>-->
+<!--<main class="main">
+  <div class="content">    
     <app-hijo-mensaje (mensajeDesdeHijo)="recibirMensaje($event)"/>
     <h2>Mensaje recibido: {{mensajeRecibido}}</h2>
   </div>
 </main>
 <router-outlet />
+-->
+
+<app-padre></app-padre>
+<hr>
+<app-hermano></app-hermano>
+<hr>
+<div appColor>
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium laboriosam, nihil corrupti deserunt iure, maxime a ipsam sunt natus necessitatibus dolorem ducimus deleniti eum fuga aut autem, quam nobis id?</p>
+</div>

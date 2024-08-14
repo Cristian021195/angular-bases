@@ -5,6 +5,8 @@
 - OTROS: `ng generate directive|pipe|service|class|guard|interface|enum|module`
     - Modulo: `ng generate module <nombre>` | `ng g m <nombre>`
     - Componente: `ng generate component <nombre>` | `ng g c <nombre>`
+    - Servicio `ng g s <nombre>`
+    - Directiva: `ng g d <nombre>` 
 
 ## Build
 - CONSTRUCCIÓN DE APP: `ng build`, será almacenado en `dist/`
@@ -71,9 +73,47 @@ de componentes y permite configurar la app angular. Es la metadata que tiene por
 - Un hijo puede emitir eventos que un padre puede escuchar a traves de las `propiedades de salida`
 
 ### Servicios:
+- Es una clase de Typescript, con un decorador `@Inyectable({providedIn:'root'})`
+- También nos permite hacer una comunicación entre componentes. Pero es mas usado para cosas mas complejas.
+- Permite centralizar y compartir logica, datos, funcionalidades entre diferentes componentes
+- Divide la logica de la UI
+- Usa inyecccion de dependencias para instancias proporcionadas. Es mas facil de testear
+- Se puede hacer persistir la información una vez desmontado el componente
+- Crear servicio `ng g s <nombre>`
+- `providedIn:<lugar>`, generalmente es root, pero podemos proveerlo en diferentes lugares de la aplicación
+- Comparando con React podemos decir que:
+    - Sería similar a hablar de custom hooks: ya que encapsulan logica fuera de la vista
+    - Sería similar a hablar de context providers: ya que hace persistente los datos en memoria
+- Ejemplo: una vez creado el servicio, lo ponemos en el constructor del componente
+    - `import {MiServicio} from ...` Importamos el servicio
+    - `constructor(private miServicio: MiServicio){...}` de esta manera hacemos la inyeccion de la dependencia
+
+
 ### Dependencias:
-### Plantillas:
+- Son los recursos externos y módulos de código que una aplicación necesita para funcionar correctamente
+- Pueden ser librerias externas, modulos del core de Angular, servicios, etc.
+- Se gestionan por el sistema de inyección de dependencias, es decir lo aplicamos donde necesitemos usarlo
+- Inyeccion de constructores: dependencias pasadas a traves de constructores
+
 ### Directivas:
+- Son instrucciones en el marcado HTML que dan funcionalidad adicional a los elementos del DOM existentes
+o personalizan su comportamiento.
+- Permiten extender y manipular el DOM de manera declarativa, facilitando la creacion de UI interactiva
+- Angular viene con directivas propias y pueden crearse otras personalizadas
+- Van incluidas en el HTML
+- Algunas son:
+    - Directivas estructurales: @if, @foreach, @for
+    - De atributos: ["attr"]
+    - De eventos: (click)
+- Crear directiva personalizada: `ng g d <nombre>` 
+- Nos crea una clase con el decorador `@Directive({selector:'[app<nombre>]'})`
+    - En el constructor tiene `private el: ElementRef` que hace referencia al HTML del elemento que la usa
+- Se en la etiqueta HTML: `<div appNombreDirectiva></div>` 
+- Se usa mucho directivas de permisos para los casos en los que el usuario no este logueado / registrado / roles
+- NO OLVIDAR, siempre que las queramos usar, ponerlas en los imports del componente en cuestion
+
+### Plantillas:
+
 ### Router:
 ### Metadata: 
 - Son representado por los decoradores, es la información que define

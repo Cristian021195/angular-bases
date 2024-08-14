@@ -3,6 +3,9 @@ import { RouterOutlet } from '@angular/router';
 import { ContadorComponent } from './contador/contador.component';
 import { HijoMensajeComponent } from './hijo-mensaje/hijo-mensaje.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HermanoComponent } from './hermano/hermano.component';
+import { PadreComponent } from './padre/padre.component';
+import { ColorDirective } from './color.directive';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +14,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterOutlet,
     ContadorComponent,
     HijoMensajeComponent,
+    HermanoComponent,
+    PadreComponent,
+    ColorDirective,
     //IMPORTANTE! Las importaciones ahora se hacen aqui, ya no existe app.module.ts en angular >= 17
     FormsModule,//formulario clasico template
     ReactiveFormsModule//formulario reactivo
