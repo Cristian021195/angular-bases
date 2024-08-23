@@ -112,9 +112,35 @@ o personalizan su comportamiento.
 - Se usa mucho directivas de permisos para los casos en los que el usuario no este logueado / registrado / roles
 - NO OLVIDAR, siempre que las queramos usar, ponerlas en los imports del componente en cuestion
 
-### Plantillas:
+### Pipes / Filtros:
+- Permite formatear y transformar datos en la vista de una aplicación
+- Son funciones con una entrada y procesan una salida formateada en la interfaz de usuario, pueden pasarse parametros
+- Se usan en los componentes de vista y se aplican usando `{{<entrada>|<pipe>}}`
+- Se pueden encadenar con otros pipes
+- Ejemplos como formateo de fecha, moneda, porcentajes, mayusculas, etc
+- Podemos crear nuestros propios pipes
+- `ng g p <nombre-de-pipe>` y genera una clase que implementa `PipeTransform` con la directiva `@Pipe({name:''})`
+- dentro de la clase tiene un metodo `transform(v){return v.<transformacion>}`
 
 ### Router:
+- Permite hacer SPA donde los cambios en la URL desencadenan cambios en los componentes y la vista en general
+- Da una experiencia de usuario mas fluida
+- Angular por defecto ya trae rutas
+- `<router-outlet/>` usado en la plantilla, indica a angular donde debe cargar los componentes asociados a url
+- `<a routerLink="/inicio">_</a>` la navegacion se dispara con los enlaces, botones, o con el servicio Router si no es visible
+- `{path:'prod/:id', component: Component}` podemos mandarle parametros especificos para pasar datos al componente
+- `{path:'prod/:category/:id', component: Component}` se puede con mas de un parametro
+- `<a [routerLink]="['/prod'], prod.id">_</a>` podemos mandarle parametros especificos para pasar datos al componente
+- `<a routerLink="/inicio" routerLinkActive="active">_</a>` pone la clase css active si el link hace match con la url
+- Hoy en dia se usa `ngClass` en ves de routerLinkActive estos dias
+- En el controlador, para recuperar parametros de la url en el componente inyectamos `ActivatedRoute` de angular y con `ngOnInit` `this.route.params.suscribe(){...}` recuperamos los valores
+- Para navegar desde el controlador importamos `Router` de angular y lo inyectamos. Podemos navegar haciendo `this.router.navigate(['/ruta',id])`
+
+### Plantillas:
+- Son instrucciones en el marcado HTML que dan funcionalidad adicional a los elementos del DOM existentes
+o personalizan su comportamiento.
+
+
 ### Metadata: 
 - Son representado por los decoradores, es la información que define
     - modulos, servicios, etc.

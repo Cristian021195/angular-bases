@@ -6,6 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HermanoComponent } from './hermano/hermano.component';
 import { PadreComponent } from './padre/padre.component';
 import { ColorDirective } from './color.directive';
+import { MayusPipe } from './mayus.pipe';
+import { DashedPipe } from './dashed.pipe';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +20,9 @@ import { ColorDirective } from './color.directive';
     HermanoComponent,
     PadreComponent,
     ColorDirective,
+    MayusPipe,
+    DashedPipe,
+    DatePipe,
     //IMPORTANTE! Las importaciones ahora se hacen aqui, ya no existe app.module.ts en angular >= 17
     FormsModule,//formulario clasico template
     ReactiveFormsModule//formulario reactivo
@@ -32,6 +38,7 @@ export class AppComponent {
   recibeMensaje(msg:string){//6
     this.recibido = msg;
   }*/
+  fecha: Date = new Date();
   mensajeRecibido:string = '';
   recibirMensaje($event:string){
     this.mensajeRecibido = $event;

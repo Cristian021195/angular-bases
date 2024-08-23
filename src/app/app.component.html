@@ -16,3 +16,9 @@
 <div appColor>
   <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium laboriosam, nihil corrupti deserunt iure, maxime a ipsam sunt natus necessitatibus dolorem ducimus deleniti eum fuga aut autem, quam nobis id?</p>
 </div>
+<div>
+  <p>{{'Texto usando MayusPipe y DashedPipe' | mayus | dashed }}</p>
+  <b>Pipe de Fecha: {{ fecha | date: 'short' }}</b>
+  <br>
+  <b>Pipe de Fecha 2: {{ fecha | date: 'dd-MM-YYYY' }}</b>
+</div>
